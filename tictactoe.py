@@ -8,8 +8,7 @@ Exercises
 4. How could you create a computer player?
 """
 
-from turtle import *
-
+import turtle
 from freegames import line
 
 
@@ -29,10 +28,10 @@ def drawx(x, y):
 
 def drawo(x, y):
     """Draw O player."""
-    up()
-    goto(x + 67, y + 5)
-    down()
-    circle(62)
+    turtle.up()
+    turtle.goto(x + 67, y + 5)
+    turtle.down()
+    turtle.circle(62)
 
 
 def floor(value):
@@ -51,14 +50,14 @@ def tap(x, y):
     player = state['player']
     draw = players[player]
     draw(x, y)
-    update()
+    turtle.update()
     state['player'] = not player
 
 
-setup(420, 420, 370, 0)
-hideturtle()
-tracer(False)
+turtle.setup(420, 420, 370, 0)
+turtle.hideturtle()
+turtle.tracer(False)
 grid()
-update()
-onscreenclick(tap)
-done()
+turtle.update()
+turtle.onscreenclick(tap)
+turtle.done()
