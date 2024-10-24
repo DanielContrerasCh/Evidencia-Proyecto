@@ -35,10 +35,10 @@ pacman = vector(0, 0)
 
 # Matriz con dirección y posición inicial de fantasmas
 ghosts = [
-    [vector(-180, 160), vector(5, 0)],
-    [vector(-180, -160), vector(0, 5)],
-    [vector(100, 160), vector(0, -5)],
-    [vector(100, -160), vector(-5, 0)],
+    [vector(-180, 160), vector(10, 0)],
+    [vector(-180, -160), vector(0, 10)],
+    [vector(100, 160), vector(0, -10)],
+    [vector(100, -160), vector(-10, 0)],
 ]
 
 # Matriz que define el tablero de juego
@@ -180,10 +180,10 @@ def move():
             # Si el fantasma no puede seguir en su direccián actual,
             # elige una nueva direccián aleatoria
             options = [
-                vector(5, 0),    # Derecha
-                vector(-5, 0),   # Izquierda
-                vector(0, 5),    # Arriba
-                vector(0, -5),   # Abajo
+                vector(10, 0),    # Derecha
+                vector(-10, 0),   # Izquierda
+                vector(0, 10),    # Arriba
+                vector(0, -10),   # Abajo
             ]
             plan = choice(options)
             course.x = plan.x
