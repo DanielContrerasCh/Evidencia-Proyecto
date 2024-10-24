@@ -205,7 +205,7 @@ def move():
 
 
 def change(x, y):
-    """Cambia la direccián de Pacman si el movimiento es válido.
+    """Cambia la dirección de Pacman si el movimiento es válido.
 
     Args:
         x (int): Componente x del vector dirección
