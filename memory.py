@@ -27,6 +27,9 @@ state = {'mark': None}
 # Lista que indica si las fichas están ocultas o reveladas
 hide = [True] * 64
 
+# Contador de taps (intentos)
+tap_count = 0
+
 
 def square(x, y):
     """Dibujar cuadro de las fichas ocultas de la imagen."""
@@ -53,6 +56,9 @@ def xy(count):
 
 def tap(x, y):
     """Mostrar y esconder fichas según las selecciones del jugador."""
+    global tap_count
+    tap_count += 1  # Incrementar el contador de taps
+
     spot = index(x, y)
     mark = state['mark']
 
@@ -85,6 +91,12 @@ def draw():
         turtle.goto(x + 2, y)
         turtle.color('black')
         turtle.write(tiles[mark], font=('Arial', 30, 'normal'))
+
+    # Mostrar el contador de taps en la pantalla
+    turtle.up()
+    turtle.goto(-180, 180)  # Poner contador en la esquina superior izquierda
+    turtle.color('black')
+    turtle.write(f'Taps: {tap_count}', font=('Arial', 16, 'normal'))
 
     # Actualizar cambios.
     turtle.update()
