@@ -1,12 +1,14 @@
-"""Memory, puzzle game of number pairs.
+"""Juego de memoria con fichas numéricas en pares.
 
-Exercises:
+El objetivo es descubrir pares de fichas que contengan el mismo número.
+El tablero está compuesto por 64 fichas inicialmente ocultas.
 
-1. Count and print how many taps occur.
-2. Decrease the number of tiles to a 4x4 grid.
-3. Detect when all tiles are revealed.
-4. Center single-digit tile.
-5. Use letters instead of tiles.
+Ejercicios sugeridos:
+1. Contar y mostrar cuántos intentos realiza el jugador.
+2. Reducir el número de fichas a una cuadrícula de 4x4.
+3. Detectar cuándo todas las fichas han sido descubiertas.
+4. Centrar los números de una sola cifra en las fichas.
+5. Usar letras en lugar de números en las fichas.
 """
 
 from random import *
@@ -14,14 +16,21 @@ from turtle import *
 
 from freegames import path
 
+# Cargar imagen para las fichas
 car = path('car.gif')
+
+# Crear una lista de números en pares
 tiles = list(range(32)) * 2
+
+# Variable que almacena la ficha actualmente seleccionada
 state = {'mark': None}
+
+# Lista que indica si las fichas están ocultas o reveladas
 hide = [True] * 64
 
 
 def square(x, y):
-    """Draw white square with black outline at (x, y)."""
+    """Dibujar cuadro de las fichas ocultas de la imagen."""
     up()
     goto(x, y)
     down()
@@ -34,17 +43,17 @@ def square(x, y):
 
 
 def index(x, y):
-    """Convert (x, y) coordinates to tiles index."""
+    """Identificar la ficha seleccionada por el jugador."""
     return int((x + 200) // 50 + ((y + 200) // 50) * 8)
 
 
 def xy(count):
-    """Convert tiles count to (x, y) coordinates."""
+    """Convertir el índice de ficha en coordenadas (x, y)."""
     return (count % 8) * 50 - 200, (count // 8) * 50 - 200
 
 
 def tap(x, y):
-    """Update mark and hidden tiles based on tap."""
+    """Mostrar y esconder fichas según las selecciones del jugador."""
     spot = index(x, y)
     mark = state['mark']
 
@@ -57,7 +66,7 @@ def tap(x, y):
 
 
 def draw():
-    """Draw image and tiles."""
+    """Dibujar el tablero de juego y mostrar las fichas descubiertas."""
     clear()
     goto(0, 0)
     shape(car)
@@ -68,6 +77,7 @@ def draw():
             x, y = xy(count)
             square(x, y)
 
+    # Dibujar número de la ficha sobre el cuadro.
     mark = state['mark']
 
     if mark is not None and hide[mark]:
@@ -77,10 +87,12 @@ def draw():
         color('black')
         write(tiles[mark], font=('Arial', 30, 'normal'))
 
+    # Actualizar cambios.
     update()
     ontimer(draw, 100)
 
 
+# Configuración inicial del juego
 shuffle(tiles)
 setup(420, 420, 370, 0)
 addshape(car)
