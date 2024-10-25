@@ -30,6 +30,9 @@ hide = [True] * 64
 # Contador de taps (intentos)
 tap_count = 0
 
+# Variable para indicar si el juego ha terminado
+game_over = False
+
 
 def square(x, y):
     """Dibujar cuadro de las fichas ocultas de la imagen."""
@@ -57,6 +60,12 @@ def xy(count):
 def tap(x, y):
     """Mostrar y esconder fichas según las selecciones del jugador."""
     global tap_count
+    global game_over
+
+    # Si el juego ha terminado, ignorar taps
+    if game_over:
+        return
+
     tap_count += 1  # Incrementar el contador de taps
 
     spot = index(x, y)
@@ -72,19 +81,21 @@ def tap(x, y):
 
 def draw():
     """Dibujar el tablero de juego y mostrar las fichas descubiertas."""
+    global game_over
+
     turtle.clear()
     turtle.goto(0, 0)
     turtle.shape(car)
     turtle.stamp()
 
+    # Dibujar cada ficha (oculta o descubierta)
     for count in range(64):
         if hide[count]:
             x, y = xy(count)
             square(x, y)
 
-    # Dibujar número de la ficha sobre el cuadro.
+    # Dibujar el número de la ficha si está marcada
     mark = state['mark']
-
     if mark is not None and hide[mark]:
         x, y = xy(mark)
         turtle.up()
@@ -98,9 +109,21 @@ def draw():
     turtle.color('black')
     turtle.write(f'Taps: {tap_count}', font=('Arial', 16, 'normal'))
 
+    # Verificar si todas las fichas han sido descubiertas
+    if all(not hidden for hidden in hide):
+        game_over = True
+        turtle.up()
+        turtle.goto(0, 0)
+        turtle.color('red')
+        turtle.write('¡Has ganado!', align='center',
+                     font=('Arial', 24, 'bold'))
+
     # Actualizar cambios.
     turtle.update()
-    turtle.ontimer(draw, 100)
+
+    # Si el juego no ha terminado, continuar actualizando
+    if not game_over:
+        turtle.ontimer(draw, 100)
 
 
 # Configuración inicial del juego
