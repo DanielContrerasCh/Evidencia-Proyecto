@@ -1,7 +1,8 @@
 # Evidencia-Proyecto
 
 ## Daniel Contreras Chávez - A01710608
-- Realicé el juego Pacman y sus modificaciones pertinentes
+- Realicé el juego Pacman y documenté el código con comentarios
+- Corregí la estructura del código para que siga estándares de flake8
 - Cambié la forma del tablero y aumenté la velocidad de los fantasmas
 
 ## Paul Park - A01709885
