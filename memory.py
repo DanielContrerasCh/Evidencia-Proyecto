@@ -106,7 +106,7 @@ def draw():
     # Mostrar el contador de taps en la pantalla
     turtle.up()
     turtle.goto(-180, 180)  # Poner contador en la esquina superior izquierda
-    turtle.color('black')
+    turtle.color('blue')
     turtle.write(f'Taps: {tap_count}', font=('Arial', 16, 'normal'))
 
     # Verificar si todas las fichas han sido descubiertas
@@ -114,7 +114,7 @@ def draw():
         game_over = True
         turtle.up()
         turtle.goto(0, 0)
-        turtle.color('red')
+        turtle.color('green')
         turtle.write('¡Has ganado!', align='center',
                      font=('Arial', 24, 'bold'))
 
