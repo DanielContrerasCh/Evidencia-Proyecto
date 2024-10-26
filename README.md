@@ -11,3 +11,9 @@
 - Agregué un contador del número de taps para desplegarlo en pantalla
 - Agregué un mensaje que indica el fin del juego
 - Cambié los colores del texto del contador y del fin del juego
+
+## Mónica Pérez Valencia - A01275605
+- Probé el juego de TicTacToe y realicé su documentación con comentarios
+- Cambié los colores y el width de las "X" y "O", además las centré
+- Añadí condicional para verificar si una celda estaba ocupada
+- Corregí la estructura del código para que siga estándares de flake8
