@@ -21,13 +21,21 @@ def grid():
 
 
 def drawx(x, y):
-    """Draw X player."""
-    line(x, y, x + 133, y + 133)
-    line(x, y + 133, x + 133, y)
+    """Draw X player at the given grid cell with color red"""
+    turtle.color('red')
+    turtle.width(5)
+    turtle.up()
+    turtle.goto(x - 133, y - 133)
+    turtle.down()
+    line(x+10, y+10, x + 125, y + 125)
+    line(x+10, y + 125, x + 125, y+10)
+
 
 
 def drawo(x, y):
-    """Draw O player."""
+    """Draw O player at the given grid cell with color blue"""
+    turtle.color('blue')
+    turtle.width(5)
     turtle.up()
     turtle.goto(x + 67, y + 5)
     turtle.down()
